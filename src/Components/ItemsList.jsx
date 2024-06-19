@@ -1,8 +1,15 @@
 import React from "react";
+import {useDispatch} from "react-redux"
 import { CLOUDINARY__IMAGE_PREFIX } from "./utilis";
+import { addItem } from "./utilis/cartSlice";
 
 const ItemsList = ({ Items }) => {
-  console.log(Items);
+
+  const dispatch = useDispatch()
+
+  const handleAddItems = () => {
+     dispatch(addItem())
+  }
   return (
     <div className="mt-8">
       {Items.map((item) => (
@@ -42,7 +49,9 @@ const ItemsList = ({ Items }) => {
                 />
               </div>
               <div className="border ">
-                <button className="absolute bottom-[-12px]  left-0 right-0 mx-auto border rounded-lg border-gray-200 bg-white   text-green-500 font-bold uppercase">
+                <button className="absolute bottom-[-12px]  left-0 right-0 mx-auto border rounded-lg border-gray-200 bg-white   text-green-500 font-bold uppercase"
+                onClick={handleAddItems}
+                >
                   ADD
                 </button>
               </div>

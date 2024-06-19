@@ -5,6 +5,7 @@ import useOnlineStatus from "./useOnlineStatus";
 import RestaurantCards from "./RestaurantCards";
 import Shimmer from "./Shimmer";
 import { SWIGGY_URL } from "./utilis"; // Corrected import
+import RestAvilable from "./RestAvilable";
 
 const Hero = () => {
   const [restoList, setRestoList] = useState([]);

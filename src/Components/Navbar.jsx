@@ -4,12 +4,16 @@ import { TbDiscount2 } from "react-icons/tb";
 import { CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
-
+import {useSelector} from "react-redux"
 
 const Navbar = () => {
   const [register, setRegister] = useState("Sign In");
  
-  const {loggedInUser} = useContext(UserContext)
+  const { loggedInUser } = useContext(UserContext)
+  
+  //subscribing to the selector
+
+  const cartItems = useSelector((store)=>store.cart.items)
  
   return (
     <div>
@@ -46,7 +50,7 @@ const Navbar = () => {
 
             <li className="flex items-center justify-center gap-1 hover:text-green-600">
               <CiShoppingCart style={{ width: "20px", height: "20px" }} />
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">Cart-{cartItems.length} items</Link>
             </li>
           </ul>
         </div>

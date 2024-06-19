@@ -10,13 +10,18 @@ import Error from "./Components/Error";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import RestAvilable from "./Components/RestAvilable";
+import {Provider} from "react-redux"
+import appStore from "./Components/utilis/appStore";
 
 const App = () => {
   return (
+    <Provider store={appStore}>
     <>
       <Navbar />
       <Outlet />
-    </>
+      </>
+      </Provider>
   );
 };
 
@@ -27,7 +32,18 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Hero />,
+        element: (
+          <>
+            <Hero />
+            <RestAvilable/>
+          </>
+        ),
+        
+      },
+      {
+        path: "/",
+        element: <RestAvilable/>,
+        
       },
       {
         path: "/Offers",
